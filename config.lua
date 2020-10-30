@@ -1,6 +1,6 @@
 -- A lazy way at doing a config lol
 
-local config -- ignore this line
+local config = {} -- ignore this line
 
 config.key = "" -- Your Discord token. Self-botting is against ToS, do at your own risk lol
 
