@@ -4,7 +4,6 @@ local config = {} -- ignore this line
 
 config.key = "" -- Your Discord token. Self-botting is against ToS, do at your own risk lol
 
-config.limitToGuild = "" -- You can limit it to a specific guild here. Leave blank or as false to disable. This also supports a table.
--- Example of a table: config.limitToGuild = {"123", "456"}
+config.limitToGuild = "" -- You can limit the bot to only focus on 1 guild. Leave this blank to target every guild
 
 return config
