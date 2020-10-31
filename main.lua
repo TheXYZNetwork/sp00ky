@@ -1,7 +1,6 @@
   GNU nano 5.2                                                                                                      main.lua
 local discordia = require('discordia')
 local client = discordia.Client()
-local olib = require("./olib.lua")
 local config = require("./config.lua")
 local timer = require("timer")
 
@@ -29,7 +28,7 @@ client:on('messageCreate', function(message)
         if not (message.embed.title == "A trick-or-treater has stopped by!") then return end
 
         -- Run the correct response
-        local breakDown = olib.Explode(" ", message.embed.description, false)
+        local breakDown = message.embed.description:split(" ")
         local command = breakDown[#breakDown]
 
         print("Running the following command:", command, "In channel:", message.channel.name, "At guild:", message.guild.name)
