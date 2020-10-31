@@ -3,6 +3,7 @@ local client = discordia.Client()
 local config = require("./config.lua")
 local timer = require("timer")
 
+-- Stolen from somewhere, probably gmod
 local string_sub = string.sub
 local string_find = string.find
 local string_len = string.len
