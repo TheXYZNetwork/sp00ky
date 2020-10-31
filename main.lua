@@ -1,4 +1,3 @@
-  GNU nano 5.2                                                                                                      main.lua
 local discordia = require('discordia')
 local client = discordia.Client()
 local config = require("./config.lua")
