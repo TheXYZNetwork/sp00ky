@@ -3,6 +3,27 @@ local client = discordia.Client()
 local config = require("./config.lua")
 local timer = require("timer")
 
+local string_sub = string.sub
+local string_find = string.find
+local string_len = string.len
+local function stringExplose(separator, str, withpattern)
+	if ( separator == "" ) then return {str} end
+	if ( withpattern == nil ) then withpattern = false end
+
+	local ret = {}
+	local current_pos = 1
+
+	for i = 1, string_len( str ) do
+		local start_pos, end_pos = string_find( str, separator, current_pos, not withpattern )
+		if ( not start_pos ) then break end
+		ret[ i ] = string_sub( str, current_pos, start_pos - 1 )
+		current_pos = end_pos + 1
+	end
+
+	ret[ #ret + 1 ] = string_sub( str, current_pos )
+
+	return ret
+end
 
 client:on('ready', function()
         print('Logged in as '.. client.user.username)
@@ -27,7 +48,7 @@ client:on('messageCreate', function(message)
         if not (message.embed.title == "A trick-or-treater has stopped by!") then return end
 
         -- Run the correct response
-        local breakDown = message.embed.description:split(" ")
+        local breakDown = stringExplose(" ", message.embed.description)
         local command = breakDown[#breakDown]
 
         print("Running the following command:", command, "In channel:", message.channel.name, "At guild:", message.guild.name)
