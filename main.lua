@@ -7,7 +7,7 @@ local timer = require("timer")
 local string_sub = string.sub
 local string_find = string.find
 local string_len = string.len
-local function stringExplose(separator, str, withpattern)
+local function stringExplode(separator, str, withpattern)
 	if ( separator == "" ) then return {str} end
 	if ( withpattern == nil ) then withpattern = false end
 
@@ -49,7 +49,7 @@ client:on('messageCreate', function(message)
         if not (message.embed.title == "A trick-or-treater has stopped by!") then return end
 
         -- Run the correct response
-        local breakDown = stringExplose(" ", message.embed.description)
+        local breakDown = stringExplode(" ", message.embed.description)
         local command = breakDown[#breakDown]
 
         print("Running the following command:", command, "In channel:", message.channel.name, "At guild:", message.guild.name)
